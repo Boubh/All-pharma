@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allô Pharma</title>
+    <style>
+        /* CSS intégré */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+            width: auto;
+            margin-right: 10px;
+        }
+
+        header h1 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        header nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        #search-bar {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        #medicine-list div {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        #medicine-list img {
+            height: 80px;
+            width: auto;
+            margin-bottom: 10px;
+        }
+
+        .legal-info {
+            font-size: 0.9em;
+            color: gray;
+        }
+
+        #logo-europe {
+            display: block;
+            margin: 20px auto;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- HTML structure -->
+    <header>
+        <div style="display: flex; align-items: center;">
+            <img src="image/logo.jpeg" alt="Logo Allô Pharma">
+            <h1>Allô Pharma</h1>
+        </div>
+        <nav>
+            <a href="#search">Rechercher</a>
+            <a href="#cart">Panier</a>
+            <a href="#profile">Profil</a>
+            <a href="#mentions-legales">Mentions légales</a>
+        </nav>
+    </header>
+
+    <section id="search">
+        <h2>Rechercher un médicament</h2>
+        <input type="text" placeholder="Nom du médicament..." id="search-bar">
+        <button onclick="searchMedicine()">Rechercher</button>
+    </section>
+
+    <section id="results">
+        <h2>Résultats</h2>
+        <div id="medicine-list">
+            <!-- Résultats affichés ici via JavaScript -->
+        </div>
+    </section>
+
+    <section id="mentions-legales">
+        <h2>Mentions légales</h2>
+        <p>Pharmacien responsable : <strong>Dr. Jean Dupont</strong></p>
+        <p>Adresse de la pharmacie : <strong>123 Rue de la Santé, 75001 Paris, France</strong></p>
+        <p>Ce site est conforme à la réglementation européenne concernant la vente en ligne de médicaments.</p>
+        <p>
+            <a href="https://ec.europa.eu/health/medicines/approved-online-pharmacies" target="_blank">
+                <img id="logo-europe" src="Image/R.png" alt="Logo européen">
+            </a>
+        </p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Allô Pharma</p>
+        <p class="legal-info">Pharmacien responsable : Dr. Jean Dupont | Adresse : 123 Rue de la Santé, Paris</p>
+    </footer>
+
+    <script>
+    function searchMedicine() {
+        const medicineList = document.getElementById('medicine-list');
+        medicineList.innerHTML = `
+            <div>
+                <img src="Image/B.jpeg" alt="Paracétamol">
+                <h3>Paracétamol</h3>
+                <p>Prix : 3€</p>
+                <p><small>Indications : Douleurs légères à modérées, fièvre.</small></p>
+                <a href="notice_paracetamol.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Paracétamol', 1)">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/A.jpeg" alt="Ibuprofène">
+                <h3>Ibuprofène</h3>
+                <p>Prix : 5€</p>
+                <p><small>Indications : Douleurs, inflammations, fièvre.</small></p>
+                <a href="notice_ibuprofene.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Ibuprofène', 1)">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/C.jpeg" alt="Doliprane">
+                <h3>Doliprane</h3>
+                <p>Prix : 1.59€</p>
+                <p><small>Indications : Fièvre, maux de tête, douleurs modérées.</small></p>
+                <a href="notice_doliprane.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Doliprane')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/D.jpeg" alt="Spasfon">
+                <h3>Spasfon</h3>
+                <p>Prix : 4.20€</p>
+                <p><small>Indications : Crampes abdominales, spasmes digestifs.</small></p>
+                <a href="notice_spasfon.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Spasfon')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/E.jpeg" alt="Amoxicilline">
+                <h3>Amoxicilline</h3>
+                <p>Prix : 7€</p>
+                <p><small>Indications : Infections bactériennes (respiratoires, ORL, urinaires).</small></p>
+                <a href="notice_amoxicilline.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Amoxicilline')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/F.jpeg" alt="Efferalgan">
+                <h3>Efferalgan</h3>
+                <p>Prix : 2.50€</p>
+                <p><small>Indications : Fièvre, douleurs légères à modérées.</small></p>
+                <a href="notice_efferalgan.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Efferalgan')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/G.jpeg" alt="Gaviscon">
+                <h3>Gaviscon</h3>
+                <p>Prix : 6.30€</p>
+                <p><small>Indications : Reflux gastrique, brûlures d’estomac.</small></p>
+                <a href="notice_gaviscon.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Gaviscon')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/H.jpeg" alt="Nurofen">
+                <h3>Nurofen</h3>
+                <p>Prix : 4.90€</p>
+                <p><small>Indications : Douleurs, inflammations, fièvre.</small></p>
+                <a href="notice_nurofen.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Nurofen')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/I.jpeg" alt="Magnésium">
+                <h3>Magnésium</h3>
+                <p>Prix : 3.80€</p>
+                <p><small>Indications : Fatigue, crampes musculaires, carence en magnésium.</small></p>
+                <a href="notice_magnesium.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Magnésium')">Ajouter au panier</button>
+            </div>
+            <div>
+                <img src="Image/J.jpeg" alt="Vitamine C">
+                <h3>Vitamine C</h3>
+                <p>Prix : 2.90€</p>
+                <p><small>Indications : Fatigue passagère, renforcement du système immunitaire.</small></p>
+                <a href="notice_vitamine_c.pdf" target="_blank">Lire la notice</a>
+                <button onclick="addToCart('Vitamine C')">Ajouter au panier</button>
+            </div>
+        `;
+    }
+</script>
+
+</body>
+</html>
